@@ -21,6 +21,7 @@ def list_of_options
   puts '0- Exit'
 end
 
+# rubocop:disable Metrics/CyclomaticComplexity
 def option(input)
   case input
   when '1'
@@ -45,5 +46,5 @@ def option(input)
     add_game
   end
 end
-
+# rubocop:enable Metrics/CyclomaticComplexity
 main
