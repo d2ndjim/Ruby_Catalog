@@ -1,4 +1,4 @@
-class item
+class Item
   attr_reader :genre, :author, :label, :Source
 
   def initialize(publish_date, archived: false)
