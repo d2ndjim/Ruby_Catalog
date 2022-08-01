@@ -13,3 +13,6 @@ class Author
     item.add_author = self
   end
 end
+
+author = Author.new("Lekan", "Jimoh")
+puts author.first_name

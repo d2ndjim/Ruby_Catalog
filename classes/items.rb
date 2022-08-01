@@ -1,9 +1,11 @@
-class item
-  attr_reader :genre, :author, :label, :Source
+require 'date' 
+
+class Item
+  attr_reader :genre, :author, :label, :Source, :publish_date, :archived
 
   def initialize(publish_date, archived: false)
     @id = Random.rand(1...1000)
-    @publish_date = Date.new(publish_date)
+    @publish_date = publish_date
     @archived = archived
   end
 
@@ -35,6 +37,7 @@ class item
   private
 
   def can_be_archived?
-    (Date.today.year - @publish_date.today.year) > 10
+    date = DateTime.parse(@publish_date).to_date
+    (Date.today.year - date.year) > 10
   end
 end
