@@ -6,6 +6,7 @@ def main
 end
 
 def list_of_options
+  puts "\n"
   puts 'Choose an option by entering a number'
   puts '1- List all books'
   puts '2- List all Music albums'
