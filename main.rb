@@ -1,10 +1,8 @@
 require_relative './app'
-require './modules/game_module'
 
 def main
   app = App.new
   app.start_program
-  include GameModule
 end
 
 def list_of_options
@@ -45,7 +43,7 @@ def option(input)
   when '9'
     add_album
   when '10'
-    add_new_game_details
+    add_game
   end
 end
 # rubocop:enable Metrics/CyclomaticComplexity

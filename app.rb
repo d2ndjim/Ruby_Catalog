@@ -1,11 +1,8 @@
-require './modules/preserver_module'
-require_relative './classes/game'
-require_relative './classes/author'
-require './modules/game_module'
+require_relative './modules/preserver_module'
 
 class App
   include PreserverModule
-  include GameModule
+  attr_reader :books
 
   def initialize
     @books = []
@@ -24,7 +21,6 @@ class App
     until list_of_options
       input = gets.chomp
       if input == '0'
-        preserve_files
         puts 'Thank you for using our app'
         break
       end
@@ -60,25 +56,6 @@ class App
   def list_all_authors
     puts 'No available authors' if @authors.empty?
     @authors.each { |author| puts "author: #{author.first_name} #{author.last_name}" }
-  end
-
-  def add_author(new_author)
-    new_author_instance = Author.new(*new_author)
-    hash = {
-      'first_name' => new_author_instance.first_name,
-      'last_name' => new_author_instance.last_name
-    }
-    @authors << hash
-  end
-
-  def add_game(new_game)
-    new_game_instance = Game.new(*new_game)
-    hash = {
-      'game_name' => new_game_instance.game_name,
-      'last_played_at' => new_game_instance.last_played_at,
-      'multiplayer' => new_game_instance.multiplayer
-    }
-    @games << hash
   end
 
   def preserve_files
