@@ -2,10 +2,13 @@ require_relative './modules/preserver_module'
 require './modules/book_module'
 require_relative './classes/book'
 require_relative './classes/label'
+require './modules/game_module'
+require_relative './classes/game'
 
 class App
   include PreserverModule
   include BookModule
+  include GameModule
   attr_reader :books
 
   def initialize
@@ -59,8 +62,14 @@ class App
   end
 
   def list_all_games
-    puts 'No available games' if @games.empty?
-    @games.each { |game| puts "genre: #{game.genre}, published on: #{game.publish_date}" }
+    puts "\nNote: No games available." if @games.empty?
+
+    puts "\nALL GAMES\n\n"
+    puts "\Games \t| Multiplayer \t| Last Played At"
+    @games.each do |game|
+      puts "\t #{game['game_name']} \t#{game['last_played_at']} \t| #{game['multiplayer']}"
+      puts "\n-------------------------------------------------"
+    end
   end
 
   def list_all_genres
@@ -69,8 +78,13 @@ class App
   end
 
   def list_all_authors
-    puts 'No available authors' if @authors.empty?
-    @authors.each { |author| puts "author: #{author.first_name} #{author.last_name}" }
+    puts "\nNote: No authors available." if @authors.empty?
+    puts "\nALL AUTHORS\n\n"
+    puts "\First Name \t| Last Name"
+    @authors.each do |author|
+      puts "#{author['first_name']} \t| #{author['last_name']}"
+      puts "\n-------------------------------------------------"
+    end
   end
 
   def add_book(new_book)
@@ -90,6 +104,25 @@ class App
       'color' => new_label_instance.color
     }
     @labels << hash
+  end
+
+  def add_author(new_author)
+    new_author_instance = Author.new(*new_author)
+    hash = {
+      'first_name' => new_author_instance.first_name,
+      'last_name' => new_author_instance.last_name
+    }
+    @authors << hash
+  end
+
+  def add_game(new_game)
+    new_game_instance = Game.new(*new_game)
+    hash = {
+      'game_name' => new_game_instance.game_name,
+      'last_played_at' => new_game_instance.last_played_at,
+      'multiplayer' => new_game_instance.multiplayer
+    }
+    @games << hash
   end
 
   def preserve_files
