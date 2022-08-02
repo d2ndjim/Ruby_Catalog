@@ -1,8 +1,6 @@
 require_relative './app'
-require './modules/book_module'
 
 def main
-  include BookModule
   app = App.new
   app.start_program
 end

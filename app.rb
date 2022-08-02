@@ -1,9 +1,11 @@
 require_relative './modules/preserver_module'
+require './modules/book_module'
 require_relative './classes/book'
 require_relative './classes/label'
 
 class App
   include PreserverModule
+  include BookModule
   attr_reader :books
 
   def initialize
@@ -64,11 +66,6 @@ class App
   def list_all_genres
     puts 'No available genre' if @genres.empty?
     @genres.each { |genre| puts "genre: #{genre.name}" }
-  end
-
-  def list_all_labels
-    puts 'No available label' if @labels.empty?
-    @labels.each { |label| puts "label: #{label.title}, color: #{label.color}" }
   end
 
   def list_all_authors

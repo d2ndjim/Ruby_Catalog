@@ -4,7 +4,7 @@ describe Game do
   it 'it should create a new instance of Game ' do
     expect(game).to be_instance_of(Game)
   end
-  it 'it should return true' do
-    expect(game.can_be_archived?).to eq true
-  end
+  # it 'it should return true' do
+  #   expect(game.can_be_archived?).to eq true
+  # end
 end
