@@ -38,7 +38,7 @@ def option(input)
   when '7'
     add_new_book_details
   when '8'
-    add_album
+    add_new_album_details
   when '9'
     add_new_game_details
   end
