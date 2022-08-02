@@ -1,4 +1,5 @@
 require_relative './app'
+require './modules/game_module'
 
 def main
   app = App.new
