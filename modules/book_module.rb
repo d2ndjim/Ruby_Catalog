@@ -28,29 +28,3 @@ module BookModule
   end
 end
 
-# TO BE ADDED IN APP
-# require_relative './classes/book'
-# require_relative './classes/label'
-# def add_book(new_book)
-#     new_book_instance = Book.new(*new_book)
-#     hash = {
-#       'publisher' => new_book_instance.publisher,
-#       'publish_date' => new_book_instance.publish_date,
-#       'cover_state' => new_book_instance.cover_state
-#     }
-#     @books << hash
-#   end
-
-#   def add_label(new_label)
-#     new_label_instance = Label.new(*new_label)
-#     hash = {
-#       'title' => new_label_instance.title,
-#       'color' => new_label_instance.color
-#     }
-#     @labels << hash
-#   end
-
-# TO BE INCLUDED IN MAIN
-# require './modules/book_module'
-# include BookModule
-# add_new_book_details

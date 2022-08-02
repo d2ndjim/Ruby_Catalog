@@ -1,4 +1,4 @@
-require_relative './classes/game'
+require_relative '../classes/game'
 describe Game do
   game = Game.new('shark', 'yes', '2020/03/15')
   it 'it should create a new instance of Game ' do

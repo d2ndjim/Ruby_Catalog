@@ -1,4 +1,6 @@
 require_relative './modules/preserver_module'
+require_relative './classes/book'
+require_relative './classes/label'
 
 class App
   include PreserverModule
@@ -21,6 +23,7 @@ class App
     until list_of_options
       input = gets.chomp
       if input == '0'
+        preserve_files
         puts 'Thank you for using our app'
         break
       end
@@ -29,8 +32,23 @@ class App
   end
 
   def list_all_books
-    puts 'No available books' if @books.empty?
-    @books.each { |book| puts "label: #{book.label}, published on: #{book.publish_date}" }
+    puts "\nNote: No Books available." if @books.empty?
+    puts "\nALL BOOKS\n\n"
+    puts "\nPublisher \t| Publish Date \t| Cover State"
+    @books.each do |book|
+      puts "#{book['publisher']} \t\t| #{book['publish_date']} \t| #{book['cover_state']}"
+      puts "\n-------------------------------------------------"
+    end
+  end
+
+  def list_all_labels
+    puts "\nNote: No Label available." if @labels.empty?
+    puts "\nALL LABELS\n\n"
+    puts "\nLabels \t| Color"
+    @labels.each do |label|
+      puts "#{label['title'].strip} \t| #{label['color']}"
+      puts "\n----------------------------"
+    end
   end
 
   def list_all_albums
@@ -56,6 +74,25 @@ class App
   def list_all_authors
     puts 'No available authors' if @authors.empty?
     @authors.each { |author| puts "author: #{author.first_name} #{author.last_name}" }
+  end
+
+  def add_book(new_book)
+    new_book_instance = Book.new(*new_book)
+    hash = {
+      'publisher' => new_book_instance.publisher,
+      'publish_date' => new_book_instance.publish_date,
+      'cover_state' => new_book_instance.cover_state
+    }
+    @books << hash
+  end
+
+  def add_label(new_label)
+    new_label_instance = Label.new(*new_label)
+    hash = {
+      'title' => new_label_instance.title,
+      'color' => new_label_instance.color
+    }
+    @labels << hash
   end
 
   def preserve_files
