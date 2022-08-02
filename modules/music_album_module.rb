@@ -15,7 +15,7 @@ module MusicAlbumModule
 
     on_spotify = on_spotify == 'Y' || false
 
-    @app.add_album(album_name, publish_date, genre_name, on_spotify)
+    add_album(album_name, publish_date, genre_name, on_spotify)
     puts "\nNew Album Added!"
     puts "\n-------------------------------"
   end
