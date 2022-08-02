@@ -20,3 +20,23 @@ CREATE TABLE Label(
   title VARCHAR,
   color VARCHAR
 )
+
+CREATE TABLE Albums (
+  id SERIAL PRIMARY KEY,
+  genre_id INT,
+  author_id INT,
+  label_id INT,
+  publish_date DATE,
+  archived BOOLEAN,
+  on_spotify BOOLEAN,
+  name VARCHAR(100)
+
+  FOREIGN KEY (genre_id) REFERENCES Genre(id)
+  FOREIGN KEY (author_id) REFERENCES Author(id)
+  FOREIGN KEY (label_id) REFERENCES Label(id)
+)
+
+CREATE TABLE Genre (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100)
+)
