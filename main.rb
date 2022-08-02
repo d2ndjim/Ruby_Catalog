@@ -45,7 +45,7 @@ def option(input)
   when '9'
     add_album
   when '10'
-    add_game
+    add_new_game_details
   end
 end
 # rubocop:enable Metrics/CyclomaticComplexity

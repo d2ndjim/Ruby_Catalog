@@ -1,5 +1,7 @@
 require 'date'
-require_relative './item'
+require_relative './items'
+require_relative './game'
+require_relative './author'
 
 class Game < Item
   attr_accessor :multiplayer, :last_played_at, :game_name
