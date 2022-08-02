@@ -1,7 +1,8 @@
-require './modules/preserver_module'
+require_relative './modules/preserver_module'
 
 class App
   include PreserverModule
+  attr_reader :books
 
   def initialize
     @books = []
@@ -56,8 +57,6 @@ class App
     puts 'No available authors' if @authors.empty?
     @authors.each { |author| puts "author: #{author.first_name} #{author.last_name}" }
   end
-
-  
 
   def preserve_files
     save_data_as_json(@books, 'books')
