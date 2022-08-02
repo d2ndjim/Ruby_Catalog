@@ -4,6 +4,7 @@ require './modules/game_module'
 def main
   app = App.new
   app.start_program
+  include GameModule
 end
 
 def list_of_options

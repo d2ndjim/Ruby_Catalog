@@ -57,7 +57,15 @@ class App
     @authors.each { |author| puts "author: #{author.first_name} #{author.last_name}" }
   end
 
-  
+  def add_game(new_game)
+    new_game_instance = Game.new(*new_game)
+    hash = {
+      'game_name' => new_game_instance.game_name,
+      'last_played_at' => new_game_instance.last_played_at,
+      'multiplayer' => new_game_instance.multiplayer
+    }
+    @games << hash
+  end
 
   def preserve_files
     save_data_as_json(@books, 'books')
