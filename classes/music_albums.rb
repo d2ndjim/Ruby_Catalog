@@ -36,7 +36,6 @@ end
 #   end
 # end
 
-
 # def list_all_genres
 #   puts "\nNote: No genres available." if @genres.empty?
 
