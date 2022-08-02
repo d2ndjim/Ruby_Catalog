@@ -1,4 +1,8 @@
+require './modules/preserver_module'
+
 class App
+  include PreserverModule
+
   def initialize
     @books = []
     @albums = []
@@ -7,6 +11,8 @@ class App
     @labels = []
     @sources = []
     @games = []
+
+    load_data
   end
 
   def start_program
@@ -51,8 +57,23 @@ class App
     @authors.each { |author| puts "author: #{author.first_name} #{author.last_name}" }
   end
 
-  def list_all_sources
-    puts 'No available sources' if @sources.empty?
-    @sources.each { |source| puts "source: #{source.name}" }
+  def preserve_files
+    save_data_as_json(@books, 'books')
+    save_data_as_json(@labels, 'labels')
+    save_data_as_json(@albums, 'albums')
+    save_data_as_json(@genres, 'genres')
+    save_data_as_json(@games, 'games')
+    save_data_as_json(@authors, 'authors')
+  end
+
+  private
+
+  def load_data
+    @books = load_file('books')
+    @labels = load_file('labels')
+    @albums = load_file('albums')
+    @genres = load_file('genres')
+    @games = load_file('games')
+    @authors = load_file('authors')
   end
 end
