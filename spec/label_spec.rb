@@ -1,5 +1,5 @@
-require '../classes/label'
-require '../classes/items'
+require_relative '../classes/label'
+require_relative '../classes/items'
 
 describe Label do
   context 'Label class tests' do
@@ -25,7 +25,7 @@ describe Label do
     end
 
     it 'should add an item' do
-      @label.add_item(@item)
+      @label.add_items(@item)
       expect(@label.items.size).to eq(1)
       expect(@label.items[0]).to eq(@item)
     end
